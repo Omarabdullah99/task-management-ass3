@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import Todo from "./Todo";
 import AddToTask from "./AddToTask";
+import OnProgress from "./OnProgress";
+import Done from "./Done";
+import Revise from "./Revose";
+
 
 const TaskList = () => {
-  const [addTaskShow,setAddTaskShow]=useState(true)
+  const [addTaskShow,setAddTaskShow]=useState(false)
   return (
     <>
     {addTaskShow && <AddToTask setAddTaskShow={setAddTaskShow}/>}
@@ -38,6 +42,9 @@ const TaskList = () => {
     {/* Add to task end */}
       <div class="-mx-2 mb-6 flex flex-wrap">
         <Todo />
+        <OnProgress />
+        <Done />
+        <Revise />
       </div>
     </div>
     </>
