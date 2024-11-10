@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
 import { taskListContext } from "../../context";
 
-const AddToTask = ({setAddTaskShow}) => {
-  const {allTasks,setAllTask}=useContext(taskListContext)
+const EditTask = ({selectedId, setSelectedId}) => {
+  const {allTasks,setAllTask,}=useContext(taskListContext)
+  // console.log("alltasks",allTasks)
+  // console.log('selectedId',selectedId)
+  const filtervalue= allTasks.filter((t)=> t.id === selectedId)
+  // console.log('value',filtervalue[0])
   const [formValue,setFormValue]=useState({
-    title:'',
-    description:'',
-    date:'',
-    status:""
+    title: filtervalue[0].title,
+    description: filtervalue[0].description,
+    date: filtervalue[0].date,
+    status: filtervalue[0].status
 
   })
 
@@ -20,13 +24,18 @@ const AddToTask = ({setAddTaskShow}) => {
   }
   // console.log(formValue.date,formValue.status)
 
-  function handleAddTask(e){
+  function handleEditTask(e){
     e.preventDefault()
-    const newTask={id:crypto.randomUUID(), title:formValue.title, description:formValue.description, date:formValue.date, status:formValue.status}
-    // console.log(newTask)
-    setAllTask((prev)=>[...prev, newTask])
-    setAddTaskShow(false)
-
+    // console.log(selectedId)
+    
+    const newTask={id:selectedId, title:formValue.title, description:formValue.description, date:formValue.date, status:formValue.status}
+    console.log("new task",newTask)
+    const updatedTasks = allTasks.map((task) =>
+      task.id === selectedId ? newTask : task
+    );
+    
+    setAllTask(updatedTasks);
+    setSelectedId(null)
   }
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -35,7 +44,7 @@ const AddToTask = ({setAddTaskShow}) => {
           <h2 className="mb-6 text-2xl font-bold text-green-400">
             Create Task
           </h2>
-          <form onSubmit={handleAddTask}>
+          <form onSubmit={handleEditTask}>
             <div className="mb-4">
               <label
                 htmlFor="title"
@@ -111,7 +120,7 @@ const AddToTask = ({setAddTaskShow}) => {
 
             <div className="flex justify-end space-x-3">
               <button
-              onClick={()=>setAddTaskShow(false)}
+              onClick={()=>setSelectedId(null)}
                 type="button"
                 className="rounded-md border border-gray-600 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
               >
@@ -131,4 +140,4 @@ const AddToTask = ({setAddTaskShow}) => {
   );
 };
 
-export default AddToTask;
+export default EditTask;

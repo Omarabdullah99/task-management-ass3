@@ -2,30 +2,30 @@
 const data = [
     {
         "id": crypto.randomUUID(),
-        "title":"Content Writer Content Writer Content Writer",
+        "title":"Content Writer Content Writer Content Writer first",
         "description":"Prepare proctor for client meeting",
-        "date":"February 20, 2024",
+        "date":"2024-08-09",
         "status":"todo"
     },
     {
         "id": crypto.randomUUID(),
         "title":"Develop API",
         "description":"Prepare proctor for client meeting",
-        "date":"February 20, 2024",
+        "date":"2024-08-20",
         "status":"todo"
     },
     {
         "id": crypto.randomUUID(),
         "title":"Deploy to VPS",
         "description":"Prepare proctor for client meeting",
-        "date":"February 20, 2024",
+        "date":"2024-04-23",
         "status":"todo"
     },
     {
         "id": crypto.randomUUID(),
         "title":"Content Writer",
         "description":"Prepare proctor for client meeting",
-        "date":"February 20, 2024",
+        "date":"2024-12-01",
         "status":"onprogress"
     },
     
@@ -33,7 +33,7 @@ const data = [
         "id": crypto.randomUUID(),
         "title":"Content Writer",
         "description":"Make Promotional Ads for Instagram fasto's",
-        "date":"February 20, 2024",
+        "date":"2024-01-01",
         "status":"done"
     },
     
@@ -41,14 +41,14 @@ const data = [
         "id": crypto.randomUUID(),
         "title":"Content Writer",
         "description":"Make Promotional Ads for Instagram fasto's",
-        "date":"February 20, 2024",
+        "date":"2024-05-29",
         "status":"done"
     },
     {
         "id": crypto.randomUUID(),
         "title":"Content Writer",
         "description":"Make Promotional Ads for Instagram fasto's",
-        "date":"February 20, 2024",
+        "date":"2024-11-10",
         "status":"revise"
     },
     

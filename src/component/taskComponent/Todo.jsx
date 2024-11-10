@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { taskListContext } from "../../context";
+import EditTask from "./EditTask";
 
 const Todo = () => {
   const { allTasks, setAllTask } = useContext(taskListContext);
+  const [selectedId,setSelectedId]=useState(null)
   const todo = allTasks.filter((task) => task.status === "todo");
   return (
+    <>
+    {selectedId && <EditTask selectedId={selectedId} setSelectedId={setSelectedId}/>}
     <div class="mb-4 w-full px-2 sm:w-1/2 md:w-1/4">
       <div class="rounded-lg bg-indigo-600 p-4">
         <div class="mb-2 flex items-center justify-between">
@@ -38,7 +42,8 @@ const Todo = () => {
                </h4>
  
                <div class="flex gap-2">
-                 <svg
+                 <button className="cursor-pointer">
+                  <svg
                    xmlns="http://www.w3.org/2000/svg"
                    width="24"
                    height="24"
@@ -57,6 +62,8 @@ const Todo = () => {
                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
                  </svg>
+                 </button>
+                 <button className="cursor-pointer" onClick={()=>setSelectedId(t.id)}>
                  <svg
                    class="h-4 w-4 cursor-pointer text-zinc-300"
                    fill="none"
@@ -71,6 +78,7 @@ const Todo = () => {
                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                    ></path>
                  </svg>
+                 </button>
                </div>
              </div>
              <p class="mb-2 text-sm text-zinc-200">
@@ -84,6 +92,7 @@ const Todo = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
