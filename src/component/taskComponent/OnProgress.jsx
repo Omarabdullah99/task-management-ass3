@@ -6,6 +6,12 @@ const OnProgress = () => {
   const { allTasks, setAllTask } = useContext(taskListContext);
   const [selectedId, setSelectedId] = useState(null);
   const onpro = allTasks.filter((task) => task.status === "onprogress");
+
+  function deleteTask(id){
+    const deleteTask= allTasks.filter((task)=> task.id !== id)
+    // console.log(deleteTask)
+    setAllTask(deleteTask)
+  }
   return (
     <>
       {selectedId && (
@@ -44,7 +50,7 @@ const OnProgress = () => {
                     {on.title}
                   </h4>
                   <div class="flex gap-2">
-                    <button className="cursor-pointer">
+                    <button className="cursor-pointer" onClick={()=>deleteTask(on.id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"

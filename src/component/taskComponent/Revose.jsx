@@ -6,6 +6,12 @@ const Revise = () => {
   const { allTasks, setAllTask } = useContext(taskListContext);
   const [selectedId, setSelectedId] = useState(null);
   const revise = allTasks.filter((task) => task.status === "revise");
+
+  function deleteTask(id){
+    const deleteTask= allTasks.filter((task)=> task.id !== id)
+    // console.log(deleteTask)
+    setAllTask(deleteTask)
+  }
   return (
     <>
      {selectedId && (
@@ -41,7 +47,7 @@ const Revise = () => {
               <div class="flex justify-between">
                 <h4 class="mb-2 font-semibold text-rose-500">{r.title}</h4>
                 <div class="flex gap-2">
-                  <button className="cursor-pointer">
+                  <button className="cursor-pointer" onClick={()=>deleteTask(r.id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
